@@ -31,7 +31,7 @@
         <li><a href="#hero">Beranda</a></li>
         <li><a href="#fitur">Fitur</a></li>
         <li><a href="#stats">Statistik</a></li>
-        <li><a href="https://mfinance-backend.vercel.app/api/login.php" class="btn-nav">Masuk</a></li>
+        <li><a href="{{ url('/login') }}" class="btn-nav">Masuk</a></li>
       </ul>
     </div>
 
@@ -48,8 +48,8 @@
         <p class="subtitle">Kelola kekayaan dengan cerdas, investasi mudah, raih Financial Freedom lebih cepat</p>
 
         <div class="hero-buttons">
-          <a href="https://mfinance-backend.vercel.app/api/signup.php" class="btn primary">Mulai Gratis</a>
-          <a href="https://mfinance-backend.vercel.app/api/login.php" class="btn secondary">Lihat Demo</a>
+          <a href="{{ url('/signup') }}" class="btn primary">Mulai Gratis</a>
+          <a href="{{ url('/login') }}" class="btn secondary">Lihat Demo</a>
         </div>
 
         <div class="trust-badges">
