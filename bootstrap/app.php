@@ -10,9 +10,17 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware): void {
-        //
+    ->withMiddleware(function (Middleware $middleware) {
+        // ← Tambahkan di sini
+        $middleware->alias([
+            'authcheck' => \App\Http\Middleware\AuthCheck::class,
+            // tambahkan alias lain jika perlu
+            // 'admin'     => \App\Http\Middleware\AdminMiddleware::class,
+        ]);
+
+        // optional: jika ingin menambah ke group tertentu
+        // $middleware->appendToGroup('web', 'authcheck');
     })
-    ->withExceptions(function (Exceptions $exceptions): void {
+    ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
