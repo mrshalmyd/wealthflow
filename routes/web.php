@@ -25,5 +25,4 @@ Route::get('/logout', [AuthController::class, 'signout'])->name('logout');
 
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(\App\Http\Middleware\AuthCheck::class);
-
+    ->middleware('authcheck');
