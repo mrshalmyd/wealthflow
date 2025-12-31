@@ -1,59 +1,67 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- Override konflik dari auth.css agar dashboard normal -->
-    <style>
-        body {
-            background: #0a0a15 !important;          /* Dark navy untuk dashboard */
-            display: block !important;               /* Hilangkan flex center */
-            align-items: initial !important;
-            justify-content: initial !important;
-            min-height: 100vh !important;
-            overflow-y: auto !important;             /* Pastikan scroll muncul */
-        }
+<nav class="navbar">
+    <!-- Logo -->
+    <div class="logo">Marshal<span>Finance</span></div>
 
-        main.dashboard-content {
-            padding-top: 100px;                      /* Ruang untuk navbar fixed */
-            min-height: calc(100vh - 180px);         /* Pastikan footer ke bawah */
-        }
+    <!-- Hamburger menu (mobile) -->
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-        footer.footer {
-            position: relative;
-            width: 100%;
-            padding: 2rem 1rem;
-            text-align: center;
-            background: rgba(10, 10, 21, 0.95);
-            border-top: 1px solid rgba(99, 102, 241, 0.2);
-        }
+    <!-- User navigation -->
+    <div class="nav-user">
+        <span class="welcome">
+            Halo, {{ session('username') ?? 'Pengguna' }} 👋
+        </span>
+        <a href="{{ route('logout') }}" class="btn-logout">Keluar</a>
+    </div>
+</nav>
 
-        /* Hamburger clickable */
-        .hamburger {
-            cursor: pointer !important;
-            pointer-events: auto !important;
-            z-index: 1001 !important;
-        }
-    </style>
+<main class="dashboard-content">
+    <!-- Header -->
+    <div class="dashboard-header">
+        <h1>Dashboard Anda</h1>
+        <p>Kelola keuangan dan investasi dengan cerdas & mudah</p>
+    </div>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">Marshal<span>Finance</span></div>
-        <div class="hamburger">
-            <span></span><span></span><span></span>
+    <!-- Summary Cards -->
+    <div class="summary-cards">
+        <div class="card">
+            <h3>Total Portofolio</h3>
+            <div class="big-value">Rp 999 M</div>
+            <p class="small-label">Nilai aset terkini</p>
         </div>
-        <div class="nav-user">
-            <span class="welcome">Halo, {{ session('username') ?? 'Pengguna' }} 👋</span>
-            <a href="{{ route('logout') }}" class="btn-logout">Keluar</a>
-        </div>
-    </nav>
 
-    <main class="dashboard-content">
-        <!-- ... seluruh konten dashboard kamu tetap sama ... -->
-    </main>
+        <div class="card highlight">
+            <h3>Return Tahun Ini</h3>
+            <div class="big-value positive">+99.9%</div>
+            <p class="small-label">Performa Year-to-Date (YTD)</p>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+        <div class="action-buttons">
+            <a href="#" class="action-btn">💰 Top Up Saldo</a>
+            <a href="#" class="action-btn">📈 Investasi Baru</a>
+            <a href="#" class="action-btn">💸 Tarik Dana</a>
+        </div>
+    </div>
+
+    <!-- Info Tambahan -->
+    <div class="dashboard-info">
+        <p>Fitur riwayat transaksi & grafik performa akan segera hadir!</p>
+    </div>
+</main>
 @endsection
 
 @section('footer')
-    <footer class="footer">
-        <p>© 2025 Marshal Finance. All rights reserved.</p>
-        <p>Dibuat dengan ❤️ di Mars</p>
-    </footer>
+<footer class="footer">
+    <p>&copy; 2025 Marshal Finance. All rights reserved.</p>
+    <p>Dibuat dengan ❤️ di Mars</p>
+</footer>
 @endsection
