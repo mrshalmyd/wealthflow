@@ -5,7 +5,7 @@ namespace app\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use app\Models\User;
-use Illuminate\Validation\Rule;  // <-- PASTIKAN INI ADA
+use Illuminate\Validation\Rule; 
 
 class AuthController extends Controller
 {
@@ -59,9 +59,9 @@ class AuthController extends Controller
             'string',
             'min:4',
             'max:255',
-            Rule::unique('users', 'username')  // table name tanpa schema
+            Rule::unique('users', 'username') 
                 ->where(function ($query) {
-                    $query->from('public.users');  // <-- ini kuncinya, paksa "public"."users"
+                    $query->from('public.users'); 
                 }),
         ],
         'email' => [

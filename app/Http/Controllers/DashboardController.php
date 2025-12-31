@@ -8,7 +8,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Render view dashboard.blade.php
         return view('dashboard');
     }
 }
