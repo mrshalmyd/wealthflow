@@ -54,21 +54,26 @@ class AuthController extends Controller
     public function signup(Request $request)
 {
     $request->validate([
-    'username' => [
-        'required',
-        'string',
-        'min:4',
-        'max:255',
-        Rule::unique('users', 'username')   // <-- table tanpa schema di sini
-            ->where('username', $request->username),  // opsional, tapi aman
-    ],
-    'email' => [
-        'required',
-        'string',
-        'email',
-        'max:255',
-        Rule::unique('users', 'email'),
-    ],
+        'username' => [
+            'required',
+            'string',
+            'min:4',
+            'max:255',
+            Rule::unique('users', 'username')
+                ->where(function ($query) {
+                    $query->from('public.users');  // ← paksa FROM "public"."users"
+                }),
+        ],
+        'email' => [
+            'required',
+            'string',
+            'email',
+            'max:255',
+            Rule::unique('users', 'email')
+                ->where(function ($query) {
+                    $query->from('public.users');
+                }),
+        ],
         'password' => 'required|string|min:6',
     ]);
 
