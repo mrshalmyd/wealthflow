@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use app\Models\User;
 use Illuminate\Validation\Rule;  // <-- PASTIKAN INI ADA
 
 class AuthController extends Controller
