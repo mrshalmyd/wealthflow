@@ -7,7 +7,9 @@
 
     <!-- Hamburger menu (mobile) -->
     <div class="hamburger">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
 
     <!-- User navigation -->
