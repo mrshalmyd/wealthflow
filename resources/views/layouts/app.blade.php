@@ -11,6 +11,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 <body>
     <!-- Navbar bisa ditaruh di sini kalau mau global -->
@@ -19,9 +21,7 @@
         @yield('content')
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Marshal Finance</p>
-    </footer>
+    <!-- Footer opsional -->
+    @yield('footer')
 </body>
 </html>

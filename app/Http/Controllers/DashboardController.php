@@ -6,8 +6,14 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    /**
+     * Tampilkan halaman dashboard utama.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
+        // Render view 'dashboard' yang ada di resources/views/dashboard.blade.php
         return view('dashboard');
     }
 }

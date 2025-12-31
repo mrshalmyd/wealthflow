@@ -7,21 +7,30 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * User Model
+ *
+ * Merepresentasikan tabel `users` di database.
+ * Digunakan untuk autentikasi dan relasi data user.
+ */
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Atribut yang boleh diisi secara mass assignment.
      *
      * @var list<string>
      */
-    protected $fillable = ['username', 'email', 'password'];
-
+    protected $fillable = [
+        'username',
+        'email',
+        'password',
+    ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Atribut yang disembunyikan saat serialisasi (misalnya ke JSON).
      *
      * @var list<string>
      */
@@ -31,15 +40,15 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * Atribut yang otomatis di-cast ke tipe tertentu.
      *
      * @return array<string, string>
      */
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'email_verified_at' => 'datetime', // otomatis jadi instance Carbon
+            'password'          => 'hashed',   // otomatis di-hash oleh Laravel
         ];
     }
 }

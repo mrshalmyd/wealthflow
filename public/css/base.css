@@ -18,7 +18,10 @@ body {
 /* ------------------------------------------------------------------
    Typography Global
    ------------------------------------------------------------------ */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-weight: 700;
 }
 
@@ -30,14 +33,14 @@ p {
    Buttons Global
    ------------------------------------------------------------------ */
 .btn {
+  display: inline-block;
   padding: 0.9rem 1.8rem;
   border-radius: 10px;
+  font-size: 0.98rem;
   font-weight: 600;
+  text-align: center;
   text-decoration: none;
   transition: all 0.3s ease;
-  font-size: 0.98rem;
-  display: inline-block;
-  text-align: center;
 }
 
 .btn.primary {
@@ -60,12 +63,12 @@ p {
    Cards Global
    ------------------------------------------------------------------ */
 .card {
+  padding: 2.5rem;
+  text-align: center;
   background: linear-gradient(135deg, rgba(30, 30, 60, 0.6), rgba(20, 20, 50, 0.5));
   backdrop-filter: blur(16px);
   border: 1px solid rgba(99, 102, 241, 0.25);
   border-radius: 20px;
-  padding: 2.5rem;
-  text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 

@@ -2,7 +2,9 @@
    Dashboard Specific
    ========================================================================== */
 
-/* Variables */
+/* ------------------------------------------------------------------
+   Variables
+   ------------------------------------------------------------------ */
 :root {
   --primary: #6366f1;
   --secondary: #a78bfa;
@@ -13,9 +15,9 @@
    Layout & Header
    ------------------------------------------------------------------ */
 .dashboard-content {
-  padding: 110px 6% 80px;
   max-width: 1300px;
   margin: 0 auto;
+  padding: 110px 6% 80px;
 }
 
 .dashboard-header {
@@ -34,10 +36,10 @@
 }
 
 .dashboard-header p {
-  font-size: 1.25rem;
-  color: #d1d5ff;
   max-width: 600px;
   margin: 0 auto;
+  font-size: 1.25rem;
+  color: #d1d5ff;
 }
 
 /* ------------------------------------------------------------------
@@ -69,9 +71,18 @@
   margin-bottom: 0.6rem;
 }
 
-.positive { color: var(--positive); }
-.small-label { font-size: 1rem; color: #94a3b8; }
-.highlight { border: 2px solid var(--primary); }
+.small-label {
+  font-size: 1rem;
+  color: #94a3b8;
+}
+
+.positive {
+  color: var(--positive);
+}
+
+.highlight {
+  border: 2px solid var(--primary);
+}
 
 /* ------------------------------------------------------------------
    Quick Actions
@@ -90,13 +101,13 @@
 
 .action-btn {
   padding: 1.3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #c7d2fe;
+  text-decoration: none;
   background: rgba(99, 102, 241, 0.18);
   border: 1px solid rgba(99, 102, 241, 0.45);
   border-radius: 12px;
-  color: #c7d2fe;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
   transition: all 0.3s ease;
 }
 
@@ -110,11 +121,11 @@
    Chart & Transactions
    ------------------------------------------------------------------ */
 .chart-container {
-  background: rgba(20, 20, 50, 0.6);
-  border-radius: 16px;
-  padding: 2rem;
   margin: 2rem 0;
+  padding: 2rem;
+  background: rgba(20, 20, 50, 0.6);
   border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 16px;
 }
 
 .transaction-list {
@@ -122,15 +133,15 @@
 }
 
 .transaction-item {
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(99, 102, 241, 0.15);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.15);
 }
 
 .transaction-item:last-child {
-  border: none;
+  border-bottom: none;
 }
 
 /* ------------------------------------------------------------------
@@ -140,12 +151,15 @@
   .dashboard-content {
     padding: 100px 5% 60px;
   }
+
   .dashboard-header h1 {
     font-size: 2.6rem;
   }
+
   .summary-cards {
     grid-template-columns: 1fr;
   }
+
   .big-value {
     font-size: 2.6rem;
   }
@@ -155,12 +169,15 @@
   .dashboard-header h1 {
     font-size: 2rem;
   }
+
   .dashboard-header p {
     font-size: 1rem;
   }
+
   .big-value {
     font-size: 2.2rem;
   }
+
   .action-btn {
     font-size: 1rem;
     padding: 1rem;

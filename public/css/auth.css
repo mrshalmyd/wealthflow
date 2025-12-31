@@ -3,7 +3,7 @@
    ========================================================================== */
 
 /* ------------------------------------------------------------------
-   BODY - Pengaturan dasar halaman login/signup
+   Body - Pengaturan dasar halaman login/signup
    ------------------------------------------------------------------ */
 body {
   min-height: 100vh;
@@ -18,7 +18,7 @@ body {
 }
 
 /* ------------------------------------------------------------------
-   ABSTRACT BLOBS BACKGROUND
+   Abstract Blobs Background
    ------------------------------------------------------------------ */
 .auth-bg {
   position: fixed;
@@ -70,7 +70,7 @@ body {
 }
 
 /* ------------------------------------------------------------------
-   AUTH CONTAINER
+   Auth Container
    ------------------------------------------------------------------ */
 .auth-container {
   position: relative;
@@ -101,7 +101,7 @@ body {
 }
 
 /* ------------------------------------------------------------------
-   LOGO
+   Logo
    ------------------------------------------------------------------ */
 .auth-logo {
   font-size: 2.8rem;
@@ -114,23 +114,23 @@ body {
 }
 
 /* ------------------------------------------------------------------
-   TITLE & SUBTITLE
+   Title & Subtitle
    ------------------------------------------------------------------ */
 .auth-title {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
-  color: white;
+  color: #fff;
   margin-bottom: 0.5rem;
 }
 
 .auth-subtitle {
+  font-size: 1.05rem;
   color: #b0b0ff;
   margin-bottom: 2.5rem;
-  font-size: 1.05rem;
 }
 
 /* ------------------------------------------------------------------
-   FORM GROUP - Floating Label
+   Form Group - Floating Label
    ------------------------------------------------------------------ */
 .form-group {
   position: relative;
@@ -143,7 +143,7 @@ body {
   background: rgba(30, 30, 60, 0.5);
   border: 1px solid rgba(99, 102, 241, 0.4);
   border-radius: 16px;
-  color: white;
+  color: #fff;
   font-size: 1rem;
   transition: all 0.3s ease;
 }
@@ -158,8 +158,8 @@ body {
   position: absolute;
   top: 1.2rem;
   left: 1rem;
-  color: #94a3b8;
   font-size: 1rem;
+  color: #94a3b8;
   pointer-events: none;
   transition: all 0.3s ease;
 }
@@ -176,17 +176,17 @@ body {
 }
 
 /* ------------------------------------------------------------------
-   BUTTON
+   Button
    ------------------------------------------------------------------ */
 .btn-auth {
   width: 100%;
   padding: 1.1rem;
-  background: linear-gradient(90deg, #6366f1, #8b5cf6);
-  color: white;
-  border: none;
-  border-radius: 16px;
   font-size: 1.1rem;
   font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  border: none;
+  border-radius: 16px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -215,7 +215,7 @@ body {
 }
 
 /* ------------------------------------------------------------------
-   ALERT
+   Alert
    ------------------------------------------------------------------ */
 .alert {
   padding: 1rem;
@@ -237,38 +237,41 @@ body {
 }
 
 /* ------------------------------------------------------------------
-   FOOTER LINKS
+   Footer Links
    ------------------------------------------------------------------ */
-.auth-footer, .back-home {
+.auth-footer,
+.back-home {
   margin-top: 0.5rem;
-  color: #94a3b8;
   font-size: 0.95rem;
+  color: #94a3b8;
 }
 
-.auth-footer a, .back-home a {
+.auth-footer a,
+.back-home a {
   color: #818cf8;
-  text-decoration: none;
   font-weight: 500;
+  text-decoration: none;
 }
 
-.auth-footer a:hover, .back-home a:hover {
+.auth-footer a:hover,
+.back-home a:hover {
   text-decoration: underline;
 }
 
 /* ------------------------------------------------------------------
-   LOADING OVERLAY
+   Loading Overlay
    ------------------------------------------------------------------ */
 .loading-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(10, 10, 21, 0.95);
-  backdrop-filter: blur(12px);
   display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: rgba(10, 10, 21, 0.95);
+  backdrop-filter: blur(12px);
   z-index: 9999;
-  color: white;
+  color: #fff;
 }
 
 .loading-overlay.active {
@@ -278,11 +281,11 @@ body {
 .spinner {
   width: 70px;
   height: 70px;
+  margin-bottom: 2rem;
   border: 6px solid rgba(99, 102, 241, 0.3);
   border-top: 6px solid #6366f1;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-bottom: 2rem;
 }
 
 @keyframes spin {
@@ -299,25 +302,12 @@ body {
 }
 
 .loading-overlay p {
-  color: #b0b0ff;
   font-size: 1.1rem;
+  color: #b0b0ff;
 }
 
 /* ------------------------------------------------------------------
-   RESPONSIVE - Mobile
-   ------------------------------------------------------------------ */
-@media (max-width: 480px) {
-  .auth-container {
-    margin: 1rem;              /* Jarak dari pinggir layar */
-    padding: 2.5rem 2rem;
-  }
-  .auth-logo { 
-    font-size: 2.5rem;         /* Logo sedikit mengecil di HP */
-  }
-}
-
-/* ------------------------------------------------------------------
-   TOGGLE PASSWORD - Icon mata show/hide
+   Toggle Password - Icon mata show/hide
    ------------------------------------------------------------------ */
 .password-group {
   position: relative; /* Biar toggle icon bisa absolute di dalam field */
@@ -370,4 +360,38 @@ body {
 /* Warna icon saat active (password visible) */
 .toggle-password.active {
   color: #a78bfa;
+}
+
+/* ------------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------------ */
+@media (max-width: 768px) {
+  .auth-container {
+    max-width: 92%;
+    padding: 2.5rem 2rem;
+  }
+  .auth-title {
+    font-size: 2rem;
+  }
+  .auth-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    margin: 1rem;
+    padding: 2.3rem 1.6rem;
+  }
+  .auth-logo {
+    font-size: 2.5rem;
+  }
+  .form-group input {
+    padding: 1.4rem 0.9rem 0.7rem;
+    font-size: 0.95rem;
+  }
+  .btn-auth {
+    padding: 1rem;
+    font-size: 1rem;
+  }
 }

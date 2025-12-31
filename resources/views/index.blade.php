@@ -35,6 +35,7 @@
       </ul>
     </div>
 
+    <!-- Hamburger menu untuk mobile -->
     <div class="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
@@ -47,11 +48,13 @@
         <h1>Masa Depan <span>Finansial</span> Anda</h1>
         <p class="subtitle">Kelola kekayaan dengan cerdas, investasi mudah, raih Financial Freedom lebih cepat</p>
 
+        <!-- Tombol CTA -->
         <div class="hero-buttons">
           <a href="{{ url('/signup') }}" class="btn primary">Mulai Gratis</a>
           <a href="{{ url('/login') }}" class="btn secondary">Lihat Demo</a>
         </div>
 
+        <!-- Trust badges -->
         <div class="trust-badges">
           <div class="badge">✓ Diawasi OJK</div>
           <div class="badge">✓ Keamanan Bank</div>
@@ -59,6 +62,7 @@
         </div>
       </div>
 
+      <!-- Visual cards -->
       <div class="hero-visual">
         <div class="card-float card-1">
           <div class="amount">Rp 9.99 T</div>
@@ -72,7 +76,7 @@
     </div>
   </header>
 
-  <!-- Statistik -->
+  <!-- Statistik Section -->
   <section class="stats section" id="stats">
     <div class="section-header"><h2>Angka Nyata</h2></div>
     <div class="stats-grid">
@@ -124,11 +128,13 @@
 
   <!-- JavaScript -->
   <script>
+    // Toggle menu untuk mobile
     function toggleMenu() {
       document.querySelector('.nav-menu').classList.toggle('active');
       document.querySelector('.hamburger').classList.toggle('active');
     }
 
+    // Tutup menu setelah klik link
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         document.querySelector('.nav-menu').classList.remove('active');
@@ -136,10 +142,12 @@
       });
     });
 
+    // Tambahkan efek scroll pada navbar
     window.addEventListener('scroll', () => {
       document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 60);
     });
 
+    // Smooth scroll untuk anchor link
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();

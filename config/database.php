@@ -8,6 +8,8 @@ return [
     |--------------------------------------------------------------------------
     | Default Database Connection Name
     |--------------------------------------------------------------------------
+    | Koneksi default yang akan digunakan oleh aplikasi.
+    | Bisa diubah lewat file .env (DB_CONNECTION).
     */
     'default' => env('DB_CONNECTION', 'pgsql'),
 
@@ -15,9 +17,12 @@ return [
     |--------------------------------------------------------------------------
     | Database Connections
     |--------------------------------------------------------------------------
+    | Konfigurasi koneksi untuk berbagai jenis database.
+    | Pastikan environment (.env) sesuai dengan driver yang dipakai.
     */
     'connections' => [
 
+        // SQLite
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DB_URL'),
@@ -26,6 +31,7 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        // MySQL
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DB_URL'),
@@ -43,6 +49,7 @@ return [
             'engine' => null,
         ],
 
+        // PostgreSQL
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DB_URL'),
@@ -57,10 +64,11 @@ return [
             'search_path' => 'public',
             'sslmode' => 'prefer',
             'options' => extension_loaded('pdo_pgsql')
-            ? [PDO::ATTR_EMULATE_PREPARES => true]
-            : [],
+                ? [PDO::ATTR_EMULATE_PREPARES => true]
+                : [],
         ],
 
+        // SQL Server
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DB_URL'),
@@ -80,6 +88,7 @@ return [
     |--------------------------------------------------------------------------
     | Migration Repository Table
     |--------------------------------------------------------------------------
+    | Nama tabel untuk menyimpan riwayat migrasi.
     */
     'migrations' => [
         'table' => 'migrations',
@@ -90,6 +99,7 @@ return [
     |--------------------------------------------------------------------------
     | Redis Databases
     |--------------------------------------------------------------------------
+    | Konfigurasi untuk Redis (cache & database in-memory).
     */
     'redis' => [
 
@@ -97,9 +107,10 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => Str::slug(env('APP_NAME', 'laravel'), '_').'_database_',
+            'prefix' => Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_',
         ],
 
+        // Redis default
         'default' => [
             'url' => env('REDIS_URL'),
             'host' => env('REDIS_HOST', '127.0.0.1'),
@@ -109,6 +120,7 @@ return [
             'database' => env('REDIS_DB', '0'),
         ],
 
+        // Redis khusus cache
         'cache' => [
             'url' => env('REDIS_URL'),
             'host' => env('REDIS_HOST', '127.0.0.1'),
