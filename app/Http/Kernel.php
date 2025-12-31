@@ -1,3 +1,3 @@
 protected $routeMiddleware = [
-    'authcheck' => \App\Http\Middleware\AuthCheck::class,
+    'authcheck' => \app\Http\Middleware\AuthCheck::class,
 ];
