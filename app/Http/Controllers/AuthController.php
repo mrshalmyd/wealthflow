@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rule;  // <-- PASTIKAN INI ADA
 
 class AuthController extends Controller
 {
@@ -52,37 +52,37 @@ class AuthController extends Controller
      * Handle user signup
      */
     public function signup(Request $request)
-{
-    $request->validate([
-        'username' => [
-            'required',
-            'string',
-            'min:4',
-            'max:255',
-            Rule::unique('users', 'username')
-                ->where(function ($query) {
-                    $query->from('public.users');  // paksa query pakai "public"."users"
-                }),
-        ],
-        'email' => [
-            'required',
-            'string',
-            'email',
-            'max:255',
-            Rule::unique('users', 'email')
-                ->where(function ($query) {
-                    $query->from('public.users');
-                }),
-        ],
-        'password' => 'required|string|min:6',
-    ]);
+    {
+        $request->validate([
+            'username' => [
+                'required',
+                'string',
+                'min:4',
+                'max:255',
+                Rule::unique('users', 'username')
+                    ->where(function ($query) {
+                        $query->from('public.users');  // <-- KUNCI: paksa "public"."users"
+                    }),
+            ],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('users', 'email')
+                    ->where(function ($query) {
+                        $query->from('public.users');
+                    }),
+            ],
+            'password' => 'required|string|min:6',  // tambah 'confirmed' kalau ada field konfirmasi
+        ]);
 
-    User::create([
-        'username' => trim($request->input('username')),
-        'email'    => trim($request->input('email')),
-        'password' => Hash::make($request->input('password')),
-    ]);
+        User::create([
+            'username' => trim($request->input('username')),
+            'email'    => trim($request->input('email')),
+            'password' => Hash::make($request->input('password')),
+        ]);
 
-    return redirect('/login')->with('success', 'Pendaftaran berhasil! Silakan masuk.');
-}
+        return redirect('/login')->with('success', 'Pendaftaran berhasil! Silakan masuk.');
+    }
 }
