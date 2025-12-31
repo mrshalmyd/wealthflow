@@ -53,15 +53,11 @@
     </div>
 
     <!-- Info Tambahan -->
-    <div class="dashboard-info">
-        <p>Fitur riwayat transaksi & grafik performa akan segera hadir!</p>
+    <div style="text-align: center; color: #94a3b8; margin-top: 4rem;">
+      <p>Fitur riwayat transaksi & grafik performa akan segera hadir!</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">
+        &copy; 2025 Marshal Finance. All rights reserved.
+      </p>
     </div>
 </main>
-@endsection
-
-@section('footer')
-<footer class="footer">
-    <p>&copy; 2025 Marshal Finance. All rights reserved.</p>
-    <p>Dibuat dengan ❤️ di Mars</p>
-</footer>
 @endsection
