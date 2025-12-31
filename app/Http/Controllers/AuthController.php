@@ -61,7 +61,7 @@ class AuthController extends Controller
             'max:255',
             Rule::unique('users', 'username')
                 ->where(function ($query) {
-                    $query->from('public.users');  // ← paksa FROM "public"."users"
+                    $query->from('public.users');  // paksa query pakai "public"."users"
                 }),
         ],
         'email' => [
