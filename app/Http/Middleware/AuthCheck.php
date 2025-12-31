@@ -10,7 +10,7 @@ class AuthCheck
     public function handle(Request $request, Closure $next)
     {
         if (!$request->session()->has('user_id')) {
-            return redirect('/login');
+            return redirect('/login')->withErrors(['msg' => 'Harus login dulu']);
         }
         return $next($request);
     }
