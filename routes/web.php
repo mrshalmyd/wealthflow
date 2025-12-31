@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
 // Landing page
 Route::get('/', function () {
@@ -23,6 +24,5 @@ Route::post('/signup', [AuthController::class, 'signup']);
 Route::get('/logout', [AuthController::class, 'signout'])->name('logout');
 
 // Dashboard
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('authcheck');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware('authcheck');
