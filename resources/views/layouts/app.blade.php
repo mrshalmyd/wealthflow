@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marshal Finance</title>
 
-    <!-- Google Fonts (wajib untuk Inter & Playfair Display) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -13,13 +13,12 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('assets/favicon.png') }}" type="image/png">
 
-    <!-- Semua CSS (termasuk auth.css tetap di-load) -->
+    <!-- CSS untuk dashboard & halaman umum -->
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
-    <!-- Cache busting sementara (hapus ?v= setelah stabil) -->
+    <!-- Optional cache busting -->
     <!-- <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}?v={{ time() }}"> -->
 </head>
 <body>
@@ -27,7 +26,7 @@
 
     @yield('footer')
 
-    <!-- Script hamburger & scroll effect (wajib untuk mobile) -->
+    <!-- JS hamburger & scroll (opsional, bisa dipindah ke file js terpisah) -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.querySelector('.hamburger');
@@ -40,7 +39,6 @@
                 });
             }
 
-            // Navbar shrink on scroll
             window.addEventListener('scroll', () => {
                 document.querySelector('.navbar')?.classList.toggle('scrolled', window.scrollY > 50);
             });
