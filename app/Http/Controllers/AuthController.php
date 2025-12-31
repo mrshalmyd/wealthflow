@@ -3,21 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class AuthController extends Controller
 {
+    /**
+     * Handle user login (email atau username)
+     */
     public function login(Request $request)
     {
-        $email    = trim($request->input('email'));
+        // Validasi input
+        $request->validate([
+            'email'    => 'nullable|email',
+            'username' => 'nullable|string',
+            'password' => 'required',
+        ]);
+
         $password = $request->input('password');
 
-        if (empty($email) || empty($password)) {
-            return back()->withErrors(['msg' => 'Email dan password harus diisi.']);
-        }
-
-        $user = DB::table('users')->where('email', $email)->first();
+        // Cari user berdasarkan email ATAU username
+        $user = User::where('email', $request->email)
+            ->orWhere('username', $request->username)
+            ->first();
 
         if ($user && Hash::check($password, $user->password)) {
             // Simpan session
@@ -25,51 +33,39 @@ class AuthController extends Controller
             $request->session()->put('username', $user->username);
 
             return redirect('/dashboard');
-        } else {
-            return back()->withErrors(['msg' => 'Email atau password salah.']);
         }
+
+        return back()->withErrors(['msg' => 'Email/Username atau password salah.']);
     }
 
+    /**
+     * Handle user logout
+     */
     public function signout(Request $request)
-{
-    $request->session()->flush();
-    return redirect('/');
-}
+    {
+        $request->session()->flush();
+        return redirect('/');
+    }
 
-
+    /**
+     * Handle user signup
+     */
     public function signup(Request $request)
     {
-        $username = trim($request->input('username'));
-        $email    = trim($request->input('email'));
-        $password = $request->input('password');
-
-        if (empty($username) || empty($email) || empty($password)) {
-            return back()->withErrors(['msg' => 'Semua field wajib diisi.']);
-        }
-        if (strlen($username) < 4) {
-            return back()->withErrors(['msg' => 'Username minimal 4 karakter.']);
-        }
-        if (strlen($password) < 6) {
-            return back()->withErrors(['msg' => 'Password minimal 6 karakter.']);
-        }
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return back()->withErrors(['msg' => 'Format email tidak valid.']);
-        }
-
-        $check = DB::table('users')
-            ->where('email', $email)
-            ->orWhere('username', $username)
-            ->first();
-
-        if ($check) {
-            return back()->withErrors(['msg' => 'Username atau email sudah digunakan.']);
-        }
-
-        DB::table('users')->insert([
-            'username' => $username,
-            'email'    => $email,
-            'password' => Hash::make($password),
+        // Validasi input
+        $request->validate([
+            'username' => 'required|string|min:4|max:255|unique:users,username',
+            'email'    => 'required|string|email|max:255|unique:users,email',
+            'password' => 'required|string|min:6',
         ]);
+
+        // Buat user baru (timestamps otomatis terisi oleh Eloquent)
+        User::create([
+            'username' => trim($request->input('username')),
+            'email'    => trim($request->input('email')),
+            'password' => Hash::make($request->input('password')),
+        ]);
+        
 
         return redirect('/login')->with('success', 'Pendaftaran berhasil! Silakan masuk.');
     }
