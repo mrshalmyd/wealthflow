@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class AuthController extends Controller
 {
@@ -51,22 +52,31 @@ class AuthController extends Controller
      * Handle user signup
      */
     public function signup(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'username' => 'required|string|min:4|max:255|unique:users,username',
-            'email'    => 'required|string|email|max:255|unique:users,email',
-            'password' => 'required|string|min:6',
-        ]);
+{
+    $request->validate([
+        'username' => [
+            'required',
+            'string',
+            'min:4',
+            'max:255',
+            Rule::unique('public.users', 'username'),  // <-- fix utama
+        ],
+        'email' => [
+            'required',
+            'string',
+            'email',
+            'max:255',
+            Rule::unique('public.users', 'email'),
+        ],
+        'password' => 'required|string|min:6',
+    ]);
 
-        // Buat user baru (timestamps otomatis terisi oleh Eloquent)
-        User::create([
-            'username' => trim($request->input('username')),
-            'email'    => trim($request->input('email')),
-            'password' => Hash::make($request->input('password')),
-        ]);
-        
+    User::create([
+        'username' => trim($request->input('username')),
+        'email'    => trim($request->input('email')),
+        'password' => Hash::make($request->input('password')),
+    ]);
 
-        return redirect('/login')->with('success', 'Pendaftaran berhasil! Silakan masuk.');
-    }
+    return redirect('/login')->with('success', 'Pendaftaran berhasil! Silakan masuk.');
+}
 }
