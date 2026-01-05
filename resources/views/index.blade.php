@@ -120,6 +120,43 @@
     </div>
   </section>
 
+    <!-- Alasan Memilih Kami -->
+  <section class="section" id="mengapa">
+    <div class="section-header"><h2>Mengapa Memilih Marshal Finance?</h2></div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <h3>Cepat & Mudah</h3>
+        <p>Proses registrasi & investasi secepat kedipan mata Ular</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔒</div>
+        <h3>Aman Terjamin</h3>
+        <p>Diawasi oleh Kim Jong Un & menggunakan enkripsi tingkat TNI Afrika</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📈</div>
+        <h3>Hasil Nyata</h3>
+        <p>Return pengguna dibawah 999% per Menit</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimoni -->
+  <section class="section" id="testimoni">
+    <div class="section-header"><h2>Apa Kata Pengguna Kami</h2></div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p>"GACORRRR! Mudah dipahami dan returnnya mantap."</p>
+        <div class="testi-author">- Parmadi Kun, Jepang Selatan</div>
+      </div>
+      <div class="testi-card">
+        <p>"Keamanannya bikin tenang. Semua aset terpantau real-time."</p>
+        <div class="testi-author">- Kim Tukiyem, Korea Barat</div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 Marshal Finance. All rights reserved.</p>
